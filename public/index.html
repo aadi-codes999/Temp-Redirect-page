@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary Link Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="container">
+        <h1>Temporary Link Generator</h1>
+        <div class="input-group">
+            <label for="urlInput">Enter URL:</label>
+            <input type="url" id="urlInput" placeholder="https://example.com" required>
+        </div>
+        <button onclick="generateTempLink()">Generate Temporary Link</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function generateTempLink() {
+            const urlInput = document.getElementById('urlInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!urlInput) {
+                resultDiv.innerHTML = '<p class="text-red-500">Please enter a valid URL.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: urlInput })
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    const tempLink = `${window.location.origin}/redirect/${data.token}`;
+                    resultDiv.innerHTML = `<p class="text-green-500">Temporary Link: <a href="${tempLink}" target="_blank" class="underline">${tempLink}</a></p>`;
+                } else {
+                    resultDiv.innerHTML = `<p class="text-red-500">${data.error}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<p class="text-red-500">Error generating link. Please try again.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

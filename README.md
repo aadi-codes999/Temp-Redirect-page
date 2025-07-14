@@ -21,6 +21,8 @@ When the structure is done, run:
 npm install
 npm start
 ```
+## Final Steps-
+
 Now go through the localhost link
 Note: the time limit is set to 10 seconds ( 10 * 1000 ms) can be adjusted in the code.
 ------------------------------------------------

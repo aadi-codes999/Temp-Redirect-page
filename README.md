@@ -19,7 +19,10 @@ When the structure is done, run:
 
 ```bash
 npm install
-
+npm start
+```
+Now go through the localhost link
+Note: the time limit is set to 10 seconds ( 10 * 1000 ms) can be adjusted in the code.
 ------------------------------------------------
 
 ## Contribution Policy

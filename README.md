@@ -1,6 +1,27 @@
 # Temp-Redirect-page
 This website can create temporary redirecting link which is valid for a limited time.
 
+------------------------------------------------
+
+## Installing Dependencies
+
+After cloning the repository, Set the structure in the following manner,
+
+project/
+├── public/
+│   ├── index.html
+│   └── styles.css
+├── server.js
+├── package.json
+└── node_modules/
+
+When the structure is done, run:
+
+```bash
+npm install
+
+------------------------------------------------
+
 ## Contribution Policy
 
 This repository is maintained as a *read-only reference*. Copying and sharing are permitted, but modifications or contributions to the original repository are not accepted. Please **do not submit pull requests** or attempt to push changes here.
